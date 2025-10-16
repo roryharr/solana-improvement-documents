@@ -1,15 +1,17 @@
-simd	title	authors	category	type	status	created	feature	supersedes	superseded-by	extends
-XXXX
-Title of SIMD. This should be concise and descriptive.
-- Rory Harris
-- Igor Durovic
-Standard
-Core
-Idea/Review
-2025-10-17
-(fill in with feature key and github tracking issues once accepted)
-Summary
-Add Versioning to Account Information 
+---
+simd: 'XXXX'
+title: Add Version to Account
+authors:
+  - Rory Harris
+category: Standard
+type: Core
+status: Idea
+created: 2025-10-20
+feature:
+supersedes:
+superseded-by:
+extends:
+---
 
 Motivation
 Account information included in the LTHash cannot be updated as the old account hash needs to be deterministically mixed out. If an accounts hash other than the original was mixed out, it would become difficult to recreate the lattice hash to verify the accounts hash. Future SIMDs are planning on changing this information but there is no method at this time. 
