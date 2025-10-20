@@ -14,18 +14,18 @@ extends:
 ---
 
 ## Summary
+Add account version field to the account stored meta and include the account version field in accounts hash. 
 
 ## Motivation
-Account information included in the LTHash cannot be updated as the old account hash needs to be deterministically mixed out. If an accounts hash other than the original was mixed out, it would become difficult to recreate the lattice hash to verify the accounts hash. Future SIMDs are planning on changing this information but there is no method at this time. 
+There are two main motivations: Updating the meta data stored for an account in the snapshot, and updating the data included in the accounts hash. Currently the accounts database has a static header of 136 bytes along with any data stored in the account. 40 bytes of this data has been deprecated and is guaranteed to be zero. With a new version of an account, this data could be removed, shrinking the minimum account size by 40 bytes, which could result in a net reduction of 40GB to the accounts database size. In addition future SIMDS may change the data stored in the account, and/or the data included in the acccounts hash. By including a version, the correct initial hash can be calculated, and mixed out frmo the lattice hash before hte new hash is mixed in.
 
-
-## Dependencies (Optional)
-Lt Hash
 
 ## New Terminology
-Accounts Version
+Account Metadata Version - Tbe version of the account. 
 
 ## Detailed Design
+StoredMeta currently has an obsolete field: write_version_obsolete. The lowest 4 bits of this should be repu
+
 Explain the feature as if it was already implemented and you're explaining it to another Solana core contributor. The generally means:
 
 ## Explain the proposed change and how it works
